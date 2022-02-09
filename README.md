@@ -137,7 +137,7 @@ Else: return
      return L
 ```
 
-![Stooge](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Insertion.PNG)
+![Stooge](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Stooge.PNG)
 
 # Pancake
 
