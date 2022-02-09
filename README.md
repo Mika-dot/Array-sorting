@@ -71,3 +71,24 @@ function bubbleSort(a):
 ```
 
 ![Bubble](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Bubble.PNG)
+
+# Shaker
+
+A multiple run through the array is performed, neighboring elements are compared and, if necessary, swapped. When the end of the array is reached, the direction is reversed. Thus, large and small array elements are pushed in turn to the end and the beginning of the structure, respectively. Cocktail sort is also called two-way sorting by simple exchanges. There is a similar modification for selection sorting.
+
+#### Cocktail sort in Python
+```
+def cocktail(data): 
+    up = range(len(data) - 1)       
+    while True:
+        for indices in (up, reversed(up)):
+            swapped = False
+            for i in indices:
+                if data[i] > data[i+1]:  
+                    data[i], data[i+1] =  data[i+1], data[i]
+                    swapped = True
+            if not swapped:
+                return data
+```
+
+![Shaker](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Shaker.PNG)
