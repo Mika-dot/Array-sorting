@@ -55,4 +55,19 @@ Below is a table with the main sorting features.
 | OddEven        | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
 
 
+Brief description of each algorithm taken from different sites.
 
+#Bubble
+
+The algorithm consists of repeated passes through the sorted array. At each iteration, neighboring elements are sequentially compared, and if the order in the pair is incorrect, then the elements are swapped. For each pass through the array, at least one element falls into place, so it is necessary to make no more than n−1 passes, where n is the size of the array, to sort the array.
+
+Below is the pseudocode for bubble sort, which takes the array a[0..n−1] as input.
+```
+function bubbleSort(a):
+  for i = 0 to n - 2
+    for j = 0 to n - 2
+      if a[j] > a[j + 1]
+        swap(a[j], a[j + 1])
+```
+
+![Bubble](/complexity in graphics/Bubble.PNG)
