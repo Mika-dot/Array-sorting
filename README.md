@@ -69,9 +69,9 @@ function bubbleSort(a):
       if a[j] > a[j + 1]
         swap(a[j], a[j + 1])
 ```
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Bubble](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Bubble.PNG)
-#### 10 -> 2000
+#### 10 -> 2000 Real
 ![Bubble](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Bubble.PNG)
 
 # Shaker
@@ -93,9 +93,9 @@ def cocktail(data):
                 return data
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Shaker](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Shaker.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Shaker](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Shaker.PNG)
 
 # Insertion
@@ -115,9 +115,9 @@ function insertionSort(a):
       j--
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Insertion](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Insertion.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Insertion](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Insertion.PNG)
 
 # Stooge
@@ -145,18 +145,18 @@ Else: return
      return L
 ```
 
-#### 10 -> 1000
+#### 10 -> 1000 Synthetic
 ![Stooge](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Stooge.PNG)
-#### 10 -> 1000
+#### 10 -> 1000 Real
 ![Stooge](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Stooge.PNG)
 
 # Pancake
 
 Pancake sorting (from the English pancake sorting) is a sorting algorithm. The only operation allowed in the algorithm is to reverse the elements of the sequence up to some index. Unlike traditional algorithms that minimize the number of comparisons, pancake sort requires as few flips as possible. The process can be visualized as a stack of pancakes, which is shuffled by taking several pancakes from above and turning them over.
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Pancake](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Pancake.PNG)
-#### 10 -> 2000
+#### 10 -> 2000 Real
 ![Pancake](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Pancake.PNG)
 
 # Shell
@@ -172,9 +172,9 @@ Step 2. Sort the elements of each list by insertion sort.
 Step 3. Combine the lists back into an array. Decrease i. If i is non-negative, go back to step 1
 End.
 
-#### 10 -> 10000
+#### 10 -> 10000 Synthetic
 ![Shell](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Shell.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Shell](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Shell.PNG)
 
 # Merge
@@ -211,9 +211,9 @@ function merge(a : int[n]; left, mid, right : int):
         a[left + i] = result[i]
 ```
 
-#### 10 -> 10000
+#### 10 -> 10000 Synthetic
 ![Merge](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Merge.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Merge](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Merge.PNG)
 
 # Selection
@@ -228,9 +228,9 @@ At each i-th step of the algorithm, we find the i-th minimum element and swap it
          swap(a[i], a[j])
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Selection](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Selection.PNG)
-#### 10 -> 2000
+#### 10 -> 2000 Real
 ![Selection](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Selection.PNG)
 
 # Quick
@@ -245,9 +245,9 @@ Quick sort is one of the most famous and widely used sorting algorithms. The ave
         quicksort(a, q + 1, r)
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Quick](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Quick.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Quick](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Quick.PNG)
 
 # Gnome 
@@ -276,9 +276,9 @@ def gnome(data):
     return data
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Gnome](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Gnome.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Gnome](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Gnome.PNG)
 
 # Tree 
@@ -305,9 +305,9 @@ func insert(x : Node, z : Node):            // x — корень поддере
            break
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Tree](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Tree.PNG)
-#### 10 -> 2000
+#### 10 -> 2000 Real
 ![Tree](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Tree.PNG)
 
 # Comb
@@ -334,9 +334,9 @@ def comb(data):
     return data
 ```
 
-#### 10 -> 10000
+#### 10 -> 10000 Synthetic
 ![Comb](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Comb.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Comb](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Comb.PNG)
 
 # BasicCounting
@@ -358,9 +358,9 @@ SimpleCountingSort:
             b = b + 1;
 ```
 
-#### 10 -> 100000
+#### 10 -> 100000 Synthetic
 ![BasicCounting](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/BasicCounting.PNG)
-#### 10 -> 100000
+#### 10 -> 100000 Real
 ![BasicCounting](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/BasicCounting.PNG)
 
 # CombinedBubble 
@@ -382,9 +382,9 @@ The algorithm is considered educational and is practically not used outside the 
  NEXT J
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![CombinedBubble](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/CombinedBubble.PNG)
-#### 10 -> 2000
+#### 10 -> 2000 Real
 ![CombinedBubble](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/CombinedBubble.PNG)
 
 # Heapify
@@ -401,9 +401,9 @@ Heap sort, heap sort (eng. Heapsort) is a sorting algorithm that uses a binary h
      siftDown(A, 0, heapSize)
 ```
 
-#### 10 -> 10000
+#### 10 -> 10000 Synthetic
 ![Heapify](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Heapify.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Heapify](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Heapify.PNG)
 
 # Cocktail
@@ -425,9 +425,9 @@ def cocktail(data):
                 return data
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![Cocktail](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Cocktail.PNG)
-#### 10 -> 10000
+#### 10 -> 10000 Real
 ![Cocktail](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Cocktail.PNG)
 
 # OddEven 
@@ -455,9 +455,9 @@ def odd_even(data):
     return data
 ```
 
-#### 10 -> 2000
+#### 10 -> 2000 Synthetic
 ![OddEven](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/OddEven.PNG)
-#### 10 -> 2000
+#### 10 -> 2000 Real
 ![OddEven](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/OddEven.PNG)
 
 
