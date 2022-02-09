@@ -57,7 +57,7 @@ Below is a table with the main sorting features.
 
 Brief description of each algorithm taken from different sites.
 
-# Bubble 10 -> 2000
+# Bubble 
 
 The algorithm consists of repeated passes through the sorted array. At each iteration, neighboring elements are sequentially compared, and if the order in the pair is incorrect, then the elements are swapped. For each pass through the array, at least one element falls into place, so it is necessary to make no more than n−1 passes, where n is the size of the array, to sort the array.
 
@@ -69,10 +69,12 @@ function bubbleSort(a):
       if a[j] > a[j + 1]
         swap(a[j], a[j + 1])
 ```
-
+#### 10 -> 2000
 ![Bubble](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Bubble.PNG)
+#### 10 -> 2000
+![Bubble](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Bubble.PNG)
 
-# Shaker 10 -> 2000
+# Shaker
 
 A multiple run through the array is performed, neighboring elements are compared and, if necessary, swapped. When the end of the array is reached, the direction is reversed. Thus, large and small array elements are pushed in turn to the end and the beginning of the structure, respectively. Cocktail sort is also called two-way sorting by simple exchanges. There is a similar modification for selection sorting.
 
@@ -91,9 +93,12 @@ def cocktail(data):
                 return data
 ```
 
+#### 10 -> 2000
 ![Shaker](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Shaker.PNG)
+#### 10 -> 10000
+![Shaker](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Shaker.PNG)
 
-# Insertion 10 -> 2000
+# Insertion
 
 The problem is this: there is a part of the array that is already sorted, and you want to insert the remaining elements of the array into the sorted part, while maintaining the order. To do this, at each step of the algorithm, we select one of the input data elements and insert it at the desired position in the already sorted part of the array, until the entire input data set is sorted. The method of selecting the next element from the input array is arbitrary, but usually (and in order to obtain a stable sorting algorithm), elements are inserted in the order of their appearance in the input array.
 
@@ -110,9 +115,12 @@ function insertionSort(a):
       j--
 ```
 
+#### 10 -> 2000
 ![Insertion](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Insertion.PNG)
+#### 10 -> 10000
+![Insertion](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Insertion.PNG)
 
-# Stooge 10 -> 1000
+# Stooge
 
 Stooge sort (Stack sort[1], Wandering sort[2]) is a recursive sorting algorithm with time complexity {\displaystyle O(n^{\log _{1{,}5}{3)))\approx O( n^{2.71})}O(n^{{\log _{{1{,}5}}{3}}})\approx O(n^{{2.71}}). The running time of the algorithm is thus extremely long compared to efficient sorting algorithms such as Merge Sort.
 
@@ -137,15 +145,21 @@ Else: return
      return L
 ```
 
+#### 10 -> 1000
 ![Stooge](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Stooge.PNG)
+#### 10 -> 1000
+![Stooge](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Stooge.PNG)
 
-# Pancake 10 -> 2000
+# Pancake
 
 Pancake sorting (from the English pancake sorting) is a sorting algorithm. The only operation allowed in the algorithm is to reverse the elements of the sequence up to some index. Unlike traditional algorithms that minimize the number of comparisons, pancake sort requires as few flips as possible. The process can be visualized as a stack of pancakes, which is shuffled by taking several pancakes from above and turning them over.
 
+#### 10 -> 2000
 ![Pancake](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Pancake.PNG)
+#### 10 -> 2000
+![Pancake](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Pancake.PNG)
 
-# Shell 10 -> 10000
+# Shell
 
 Shellsort is a sorting algorithm that is an improved version of insertion sort.
 
@@ -158,9 +172,12 @@ Step 2. Sort the elements of each list by insertion sort.
 Step 3. Combine the lists back into an array. Decrease i. If i is non-negative, go back to step 1
 End.
 
+#### 10 -> 10000
 ![Shell](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Shell.PNG)
+#### 10 -> 10000
+![Shell](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Shell.PNG)
 
-# Merge 10 -> 10000
+# Merge
 
 The algorithm uses the “divide and conquer” principle: the problem is divided into smaller subproblems, which are solved separately, after which their solutions are combined to obtain a solution to the original problem. Specifically, the merge sort procedure can be described as follows:
 
@@ -194,9 +211,12 @@ function merge(a : int[n]; left, mid, right : int):
         a[left + i] = result[i]
 ```
 
+#### 10 -> 10000
 ![Merge](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Merge.PNG)
+#### 10 -> 10000
+![Merge](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Merge.PNG)
 
-# Selection 10 -> 2000
+# Selection
 
 At each i-th step of the algorithm, we find the i-th minimum element and swap it with the i-th element in the array. This will result in an array sorted in non-descending order.
 
@@ -208,9 +228,12 @@ At each i-th step of the algorithm, we find the i-th minimum element and swap it
          swap(a[i], a[j])
 ```
 
+#### 10 -> 2000
 ![Selection](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Selection.PNG)
+#### 10 -> 2000
+![Selection](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Selection.PNG)
 
-# Quick 10 -> 2000
+# Quick
 
 Quick sort is one of the most famous and widely used sorting algorithms. The average running time is O(nlogn), which is the asymptotically optimal running time for a comparison-based algorithm. Although the running time of the algorithm for an array of n elements can be Θ(n2) in the worst case, in practice this algorithm is one of the fastest.
 
@@ -222,9 +245,12 @@ Quick sort is one of the most famous and widely used sorting algorithms. The ave
         quicksort(a, q + 1, r)
 ```
 
+#### 10 -> 2000
 ![Quick](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Quick.PNG)
+#### 10 -> 10000
+![Quick](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Quick.PNG)
 
-# Gnome 10 -> 2000
+# Gnome 
 
 "Gnome sorting is based on a technique used by a common Dutch garden gnome (Dutch. tuinkabouter). This is the method by which a garden gnome sorts a line of flower pots. It essentially looks at the next and previous garden pots: if they are in the correct order, it steps one pot forward, otherwise it swaps them and steps back one pot. Boundary conditions: if there is no previous pot, it steps forward; if there is no next pot, it is finished."
 
@@ -250,9 +276,12 @@ def gnome(data):
     return data
 ```
 
+#### 10 -> 2000
 ![Gnome](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Gnome.PNG)
+#### 10 -> 10000
+![Gnome](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Gnome.PNG)
 
-# Tree 10 -> 2000
+# Tree 
 
 Binary search tree (BST) is a data structure for working with ordered sets.
 A binary search tree has the following property: if x is a binary tree node with key k, then all nodes in the left subtree must have keys less than k, and in the right subtree
@@ -276,9 +305,12 @@ func insert(x : Node, z : Node):            // x — корень поддере
            break
 ```
 
+#### 10 -> 2000
 ![Tree](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Tree.PNG)
+#### 10 -> 2000
+![Tree](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Tree.PNG)
 
-# Comb 10 -> 10000
+# Comb
 
 Repeated passes are made through the array, in which pairs of elements are compared. If they are not sorted relative to each other, then an exchange is made. As a result, large elements migrate to the end of the array, and small ones migrate to the beginning.
 
@@ -302,9 +334,12 @@ def comb(data):
     return data
 ```
 
+#### 10 -> 10000
 ![Comb](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Comb.PNG)
+#### 10 -> 10000
+![Comb](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Comb.PNG)
 
-# BasicCounting 10 -> 100000
+# BasicCounting
 
 Counting sort[2] is a sorting algorithm that uses the range of numbers of the sorted array (list) to count matching elements. The use of counting sort is useful only when the sorted numbers have (or can be mapped to) a range of possible values ​​that is small enough compared to the set to be sorted, for example, a million natural numbers less than 1000.
 
@@ -323,9 +358,12 @@ SimpleCountingSort:
             b = b + 1;
 ```
 
+#### 10 -> 100000
 ![BasicCounting](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/BasicCounting.PNG)
+#### 10 -> 100000
+![BasicCounting](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/BasicCounting.PNG)
 
-# CombinedBubble 10 -> 2000
+# CombinedBubble 
 
 Sort by simple exchanges, bubble sort is a simple sorting algorithm. To understand and implement this algorithm is the simplest, but it is effective only for small arrays. Complexity of the algorithm: {\displaystyle O}O{\displaystyle (n^{2})}(n^{2}).
 
@@ -344,9 +382,12 @@ The algorithm is considered educational and is practically not used outside the 
  NEXT J
 ```
 
+#### 10 -> 2000
 ![CombinedBubble](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/CombinedBubble.PNG)
+#### 10 -> 2000
+![CombinedBubble](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/CombinedBubble.PNG)
 
-# Heapify 10 -> 10000
+# Heapify
 
 Heap sort, heap sort (eng. Heapsort) is a sorting algorithm that uses a binary heap data structure. This is an unstable sorting algorithm with O(nlogn) running time, where n is the number of elements to sort, and using O(1) additional memory.
 
@@ -360,9 +401,12 @@ Heap sort, heap sort (eng. Heapsort) is a sorting algorithm that uses a binary h
      siftDown(A, 0, heapSize)
 ```
 
+#### 10 -> 10000
 ![Heapify](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Heapify.PNG)
+#### 10 -> 10000
+![Heapify](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Heapify.PNG)
 
-# Cocktail 10 -> 2000
+# Cocktail
 
 A multiple run through the array is performed, neighboring elements are compared and, if necessary, swapped. When the end of the array is reached, the direction is reversed. Thus, large and small array elements are pushed in turn to the end and the beginning of the structure, respectively. Cocktail sort is also called two-way sorting by simple exchanges. There is a similar modification for selection sorting.
 
@@ -381,9 +425,12 @@ def cocktail(data):
                 return data
 ```
 
+#### 10 -> 2000
 ![Cocktail](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Cocktail.PNG)
+#### 10 -> 10000
+![Cocktail](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Cocktail.PNG)
 
-# OddEven 10 -> 2000
+# OddEven 
 
 A multiple run through the array is performed, neighboring elements are compared and, if necessary, swapped. Unlike bubble sort, the array step is two, not one.
 
@@ -408,7 +455,10 @@ def odd_even(data):
     return data
 ```
 
+#### 10 -> 2000
 ![OddEven](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/OddEven.PNG)
+#### 10 -> 2000
+![OddEven](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/OddEven.PNG)
 
 
 ---
