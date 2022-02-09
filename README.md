@@ -70,4 +70,4 @@ function bubbleSort(a):
         swap(a[j], a[j + 1])
 ```
 
-![Bubble](/complexity in graphics/Bubble.PNG)
+![Bubble](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/Bubble.PNG)
