@@ -409,3 +409,13 @@ def odd_even(data):
 ```
 
 ![OddEven](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/OddEven.PNG)
+
+
+---
+Why you need to use custom sorting algorithms. Below is a graph of the speed of the "BasicCounting" and "Array.Sort" algorithms for standard c# sorting.
++ Graph in red "Array.Sort".
++ Graph in black "BasicCounting".
+
+From this we can conclude that the custom algorithm is faster than the standard one.
+
+![comparison](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/comparison.PNG)
