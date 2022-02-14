@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ZedGraph" Version="5.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ZedGraph">
+      <HintPath>ZedGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="ZedGraph.resources">
+      <HintPath>ZedGraph.resources.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
