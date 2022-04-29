@@ -21,15 +21,22 @@ Realizable algorithms.
 - [x] [Heapify](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%BA%D1%83%D1%87%D0%B5%D0%B9)
 - [x] [Cocktail](http://algolab.valemak.com/cocktail)
 - [x] [OddEven](http://algolab.valemak.com/odd-even)
+- [x] [Tim](https://neerc.ifmo.ru/wiki/index.php?title=Timsort)
+- [x] [Counting](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%BF%D0%BE%D0%B4%D1%81%D1%87%D0%B5%D1%82%D0%BE%D0%BC)
+- [x] [Radix](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A6%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
+- [x] [Bucket](https://neerc.ifmo.ru/wiki/index.php?title=%D0%9A%D0%B0%D1%80%D0%BC%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
+- [x] [BinaryInsertion](https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA)
+- [x] [Bogo](https://ru.wikipedia.org/wiki/Bogosort)
+- [x] [Cycle](https://en.wikipedia.org/wiki/Cycle_sort)
+- [x] [Exchange](https://mathbits.com/MathBits/Java/arrays/Exchange.htm)
+- [x] [Heap](https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%80%D0%B0%D0%BC%D0%B8%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
+- [x] [MSDRadix](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D0%B0%D0%B7%D1%80%D1%8F%D0%B4%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [ ] [PSRS](https://neerc.ifmo.ru/wiki/index.php?title=PSRS-%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [ ] [Multithreaded](https://neerc.ifmo.ru/wiki/index.php?title=%D0%9C%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC)
 - [ ] [Han's](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%A5%D1%8D%D0%BD%D0%B0_(%D0%B8%D0%BB%D0%B8_%D0%A5%D0%B0%D0%BD%D0%B0%3F))
-- [ ] [Counting](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%BF%D0%BE%D0%B4%D1%81%D1%87%D0%B5%D1%82%D0%BE%D0%BC)
-- [ ] [Radix](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A6%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
-- [ ] [Bucket](https://neerc.ifmo.ru/wiki/index.php?title=%D0%9A%D0%B0%D1%80%D0%BC%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [ ] [Patience](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A2%D0%B5%D1%80%D0%BF%D0%B5%D0%BB%D0%B8%D0%B2%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [ ] [Smooth](https://neerc.ifmo.ru/wiki/index.php?title=Smoothsort)
-- [ ] [Tim](https://neerc.ifmo.ru/wiki/index.php?title=Timsort)
+
 ---
 
 Below is a table with the main sorting features.
@@ -53,6 +60,17 @@ Below is a table with the main sorting features.
 | Heapify        | O(n logn)                | O(n logn)                 | O(n logn)               | O(n)    |
 | Cocktail       | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
 | OddEven        | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
+
+| Tim            | O(n^2)                   | O(n^2)                    | O(n^2)                  | O(n)    |
+| Counting       | O(n logn)                | O(n logn)                 | O(n^2)                  | O(logn) |
+| Radix          | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
+| Bucket         | O(n)                     | O(n logn)                 | O(n logn)               | O(n)    |
+| BinaryInsertion| O(n)                     | O((n^2) / 2^p)            | O(n^2)                  | O(n)    |
+| Bogo           | O(n)                     | O(n+k)                    | O(n+k)                  | O(n+k)  |
+| Cycle          | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
+| Exchange       | O(n logn)                | O(n logn)                 | O(n logn)               | O(n)    |
+| Heap           | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
+| MSDRadix       | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
 
 
 Brief description of each algorithm taken from different sites.
