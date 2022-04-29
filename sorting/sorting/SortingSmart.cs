@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace sorting
 {
@@ -212,11 +214,147 @@ namespace sorting
                 Heapify(arr, heapSize, max);
             }
         }
+        private static void SwapBogo(ref int[] arr, int u, int v)
+        {
+            int temp = arr[u];
+            arr[u] = arr[v];
+            arr[v] = temp;
+        }
+        private static bool sorted(int[] arr)
+        {
+            bool ret = true;
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                if (arr[i] > arr[i + 1])
+                {
+                    ret = false;
+                    break;
+                }
+            }
+            return ret;
+        }
+        private static void insertionSort(int[] arr, int left, int right)
+        {
+            for (int i = left + 1; i <= right; i++)
+            {
+                int temp = arr[i];
+                int j = i - 1;
+
+                while (j >= left && arr[j] > temp)
+                {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j + 1] = temp;
+            }
+        }
+        private static void merge(int[] arr, int l, int m, int r)
+        {
+            // original array is broken in two parts  
+            // left and right array  
+            int len1 = m - l + 1, len2 = r - m;
+            int[] left = new int[len1];
+            int[] right = new int[len2];
+
+            for (int x = 0; x < len1; x++)
+                left[x] = arr[l + x];
+
+            for (int x = 0; x < len2; x++)
+                right[x] = arr[m + 1 + x];
+
+            int i = 0;
+            int j = 0;
+            int k = l;
+
+            // after comparing, we merge those two array  
+            // in larger sub array  
+            while (i < len1 && j < len2)
+            {
+                if (left[i] <= right[j])
+                {
+                    arr[k] = left[i];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = right[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // copy remaining elements of left, if any  
+            while (i < len1)
+            {
+                arr[k] = left[i];
+                k++;
+                i++;
+            }
+
+            // copy remaining element of right, if any  
+            while (j < len2)
+            {
+                arr[k] = right[j];
+                k++;
+                j++;
+            }
+        }
+        private static T[] InitializeArray<T>(int length) where T : new()
+        {
+            T[] array = new T[length];
+            for (int i = 0; i < length; ++i)
+            {
+                array[i] = new T();
+            }
+
+            return array;
+        }
+        private static int[] MSDRadix(int[] array, int l, int r, int d, int[] temp)
+        {
+            if (l >= r)
+            {
+                return new int[0];
+            }
+
+            const int k = 256;
+
+            var count = new int[k + 2];
+            for (var i = l; i <= r; i++)
+            {
+                var j = Key(array[i]);
+                count[j + 2]++;
+            }
+
+            for (var i = 1; i < count.Length; i++)
+            {
+                count[i] += count[i - 1];
+            }
+
+            for (var i = l; i <= r; i++)
+            {
+                var j = Key(array[i]);
+                temp[count[j + 1]++] = array[i];
+            }
+
+            for (var i = l; i <= r; i++)
+            {
+                array[i] = temp[i - l];
+            }
+
+            for (var i = 0; i < k; i++)
+            {
+                MSDRadix(array, l + count[i], l + count[i + 1] - 1, d + 1, temp);
+            }
+
+            int Key(int s) => d >= s ? -1 : s;
+
+            return array;
+        }
 
 
         // -----------------------------------------------------------------
 
-        public static int[] Bubble(int[] array) //сортировка пузырьком
+        public static void Bubble(ref int[] array) //сортировка пузырьком
         {
             var len = array.Length;
             for (var i = 1; i < len; i++)
@@ -230,9 +368,8 @@ namespace sorting
                 }
             }
 
-            return array;
         }
-        public static int[] Shaker(int[] array) //сортировка перемешиванием
+        public static void Shaker(ref int[] array) //сортировка перемешиванием
         {
             for (var i = 0; i < array.Length / 2; i++)
             {
@@ -264,26 +401,28 @@ namespace sorting
                 }
             }
 
-            return array;
         }
-        public static int[] Insertion(int[] array) //сортировка вставками
+        public static void Insertion(ref int[] array) //сортировка вставками
         {
-            for (var i = 1; i < array.Length; i++)
+            int n = array.Length;
+            for (int i = 1; i < n; ++i)
             {
-                var key = array[i];
-                var j = i;
-                while ((j > 1) && (array[j - 1] > key))
+                int key = array[i];
+                int j = i - 1;
+
+                // Move elements of arr[0..i-1],
+                // that are greater than key,
+                // to one position ahead of
+                // their current position
+                while (j >= 0 && array[j] > key)
                 {
-                    Swap(ref array[j - 1], ref array[j]);
-                    j--;
+                    array[j + 1] = array[j];
+                    j = j - 1;
                 }
-
-                array[j] = key;
+                array[j + 1] = key;
             }
-
-            return array;
         }
-        public static int[] Stooge(int[] array, int startIndex, int endIndex) //сортировка по частям
+        public static void Stooge(ref int[] array, int startIndex, int endIndex) //сортировка по частям
         {
             if (array[startIndex] > array[endIndex])
             {
@@ -293,18 +432,17 @@ namespace sorting
             if (endIndex - startIndex > 1)
             {
                 var len = (endIndex - startIndex + 1) / 3;
-                Stooge(array, startIndex, endIndex - len);
-                Stooge(array, startIndex + len, endIndex);
-                Stooge(array, startIndex, endIndex - len);
+                Stooge(ref array, startIndex, endIndex - len);
+                Stooge(ref array, startIndex + len, endIndex);
+                Stooge(ref array, startIndex, endIndex - len);
             }
 
-            return array;
         }
-        public static int[] Stooge(int[] array) //сортировка по частям
+        public static void Stooge(ref int[] array) //сортировка по частям
         {
-            return Stooge(array, 0, array.Length - 1);
+            Stooge(ref array, 0, array.Length - 1);
         }
-        public static int[] Pancake(int[] array) //блинная сортировка
+        public static void Pancake(ref int[] array) //блинная сортировка
         {
             for (var subArrayLength = array.Length - 1; subArrayLength >= 0; subArrayLength--)
             {
@@ -320,9 +458,8 @@ namespace sorting
                 }
             }
 
-            return array;
         }
-        public static int[] Shell(int[] array) //сортировки Шелла
+        public static void Shell(ref int[] array) //сортировки Шелла
         {
             //расстояние между элементами, которые сравниваются
             var d = array.Length / 2;
@@ -341,16 +478,15 @@ namespace sorting
                 d = d / 2;
             }
 
-            return array;
         }
-        public static int[] Merge(int[] array) //сортировка слиянием
+        public static void Merge(ref int[] array) //сортировка слиянием
         {
-            return MergeSort(array, 0, array.Length - 1);
+            MergeSort(array, 0, array.Length - 1);
         }
-        public static int[] Selection(int[] array, int currentIndex = 0) //сортировка выбором
+        public static void Selection(ref int[] array, int currentIndex = 0) //сортировка выбором
         {
             if (currentIndex == array.Length)
-                return array;
+                return;
 
             var index = IndexOfMin(array, currentIndex);
             if (index != currentIndex)
@@ -358,13 +494,13 @@ namespace sorting
                 Swap(ref array[index], ref array[currentIndex]);
             }
 
-            return Selection(array, currentIndex + 1);
+             Selection(ref array, currentIndex + 1);
         }
-        public static int[] Quick(int[] array) //сортировка Хоара
+        public static void Quick(ref int[] array) //сортировка Хоара
         {
-            return QuickSort(array, 0, array.Length - 1);
+            QuickSort(array, 0, array.Length - 1);
         }
-        public static int[] Gnome(int[] unsortedArray) //Гномья сортировка
+        public static void Gnome(ref int[] unsortedArray) //Гномья сортировка
         {
             var index = 1;
             var nextIndex = index + 1;
@@ -387,10 +523,8 @@ namespace sorting
                     }
                 }
             }
-
-            return unsortedArray;
         }
-        public static int[] Tree(int[] array) //метод для сортировки с помощью двоичного дерева
+        public static void Tree(ref int[] array) //метод для сортировки с помощью двоичного дерева
         {
             var treeNode = new TreeNode(array[0]);
             for (int i = 1; i < array.Length; i++)
@@ -398,9 +532,9 @@ namespace sorting
                 treeNode.Insert(new TreeNode(array[i]));
             }
 
-            return treeNode.Transform();
+            array = treeNode.Transform();
         }
-        public static int[] Comb(int[] array) //Сортировка расческой
+        public static void Comb(ref int[] array) //Сортировка расческой
         {
             var arrayLength = array.Length;
             var currentStep = arrayLength - 1;
@@ -436,10 +570,8 @@ namespace sorting
                     break;
                 }
             }
-
-            return array;
         }
-        public static int[] BasicCounting(int[] array) //простой вариант сортировки подсчетом
+        public static void BasicCounting(ref int[] array) //простой вариант сортировки подсчетом
         {
             int n = array.Length;
             int max = 0;
@@ -470,10 +602,8 @@ namespace sorting
                     freq[i]--;
                 }
             }
-
-            return array;
         }
-        public static int[] CombinedBubble(int[] array)
+        public static void CombinedBubble(ref int[] array)
         {
             int length = array.Length;
 
@@ -493,10 +623,8 @@ namespace sorting
                     }
                 }
             }
-
-            return array;
         }
-        public static int[] Heapify(int[] array) // Heapify
+        public static void Heapify(ref int[] array) // Heapify
         {
             for (int i = array.Length / 2 - 1; i >= 0; i--)
                 Heapify(array, array.Length, i);
@@ -508,9 +636,8 @@ namespace sorting
                 array[i] = temp;
                 Heapify(array, i, 0);
             }
-            return array;
         }
-        public static int[] Cocktail(int[] array) // cocktail
+        public static void Cocktail(ref int[] array) // cocktail
         {
             int start = 0;
             int end = array.Length - 1;
@@ -553,9 +680,8 @@ namespace sorting
 
                 start += 1;
             }
-            return array;
         }
-        public static int[] OddEven(int[] array)
+        public static void OddEven(ref int[] array)
         {
             //Initialization
             int Flag = 0;
@@ -610,91 +736,245 @@ namespace sorting
             }
             //return sorted array
 
-            return array;
-
-        }
-
-
-        public static int[] Choice(int[] array, int room) // номер сортировки
+        } // OddEven
+        public static void BinaryInsertion(ref int[] array)
         {
-            int[] ArraySort;
-
-            switch (room)
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                case 0:
-                    ArraySort = Bubble(array);
-                    break;
+                int tmp = array[i]; int left = 0; int right = i - 1;
+                while (left <= right)
+                {
+                    int m = (left + right) / 2; //определение индекса среднего элемента
+                    if (tmp < array[m])
+                        right = m - 1; // сдвиг правой
+                    else left = m + 1; //или левой границы
+                    count++;
+                }
 
-                case 1:
-                    ArraySort = Shaker(array);
-                    break;
+                for (int j = i - 1; j >= left; j--)
+                {
+                    array[j + 1] = array[j]; // сдвиг элементов
+                                         // count++;
+                }
 
-                case 2:
-                    ArraySort = Insertion(array);
-                    break;
-
-                case 3:
-                    ArraySort = Stooge(array);
-                    break;
-
-                case 4:
-                    ArraySort = Pancake(array);
-                    break;
-
-                case 5:
-                    ArraySort = Shell(array);
-                    break;
-
-                case 6:
-                    ArraySort = Merge(array);
-                    break;
-
-                case 7:
-                    ArraySort = Selection(array);
-                    break;
-
-                case 8:
-                    ArraySort = Quick(array);
-                    break;
-
-                case 9:
-                    ArraySort = Gnome(array);
-                    break;
-
-                case 10:
-                    ArraySort = Tree(array);
-                    break;
-
-                case 11:
-                    ArraySort = Comb(array);
-                    break;
-
-                case 12:
-                    ArraySort = BasicCounting(array);
-                    break;
-
-                case 13:
-                    ArraySort = CombinedBubble(array);
-                    break;
-
-                case 14:
-                    ArraySort = Heapify(array);
-                    break;
-
-                case 15:
-                    ArraySort = Cocktail(array);
-                    break;
-
-                case 16:
-                    ArraySort = OddEven(array);
-                    break;
-
-                default:
-                    ArraySort = BasicCounting(array);
-                    break;
+                array[left] = tmp; // вставка элемента на нужное место
             }
-            return ArraySort;
-        }
+        } // BinaryInsertion
+        public static void Bogo(ref int[] array)
+        {
+            while (!sorted(array))
+            {
+                Random rdm = new Random();
+                for (int i = 0; i < array.Length; i++)
+                {
+                    {
+
+                        for (int u = 0; u < array.Length; u++)
+                        {
+                            SwapBogo(ref array, u, rdm.Next(0, array.Length - 1));
+                        }
+                    }
+                }
+
+            }
+
+        } // Bogo
+        public static void Cycle(ref int[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                int item = array[i];
+                int pos = i;
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < item)
+                    {
+                        pos++;
+                    }
+                }
+                if (pos == i)
+                {
+                    continue;
+                }
+                while (item == array[pos])
+                {
+                    pos++;
+                }
+                int var = item;
+                item = array[pos];
+                array[pos] = var;
+                while (pos != i)
+                {
+                    pos = i;
+                    for (int j = i + 1; j < array.Length; j++)
+                    {
+                        if (array[j] < item)
+                        {
+                            pos++;
+                        }
+                    }
+                    while (item == array[pos])
+                    {
+                        pos++;
+                    }
+                    int temp = item;
+                    item = array[pos];
+                    array[pos] = temp;
+                }
+            }
+
+        } // Cycle
+        public static void Exchange(ref int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = i; j < array.Length; j++)
+                {
+                    if (array[j] < array[i])
+                    {
+                        int container = array[j];
+                        array[j] = array[i];
+                        array[i] = container;
+                    }
+                }
+            }
+
+        } // Exchange
+        public static void Heap(ref int[] array)
+        {
+            int n = array.Length;
+
+
+            for (int i = n / 2 - 1; i >= 0; i--)
+                Heapify(array, n, i);
+
+            for (int i = n - 1; i > 0; i--)
+            {
+
+                int temp = array[0];
+                array[0] = array[i];
+                array[i] = temp;
+
+                Heapify(array, i, 0);
+            }
+
+        } // Heap
+        public static void Tim(ref int[] array)
+        {
+            int RUN = 32;
+
+            for (int i = 0; i < array.Length; i += RUN)
+                insertionSort(array, i, Math.Min((i + 31), (array.Length - 1)));
+
+            for (int size = RUN; size < array.Length; size = 2 * size)
+            {
+                for (int left = 0; left < array.Length; left += 2 * size)
+                {
+                    int mid = left + size - 1;
+                    int right = Math.Min((left + 2 * size - 1), (array.Length - 1));
+
+                    merge(array, left, mid, right);
+                }
+            }
+
+        } // Tim
+        public static void Counting(ref int[] array)
+        {
+            int min = 0;
+            int max = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < min)
+                    min = array[i];
+                if (array[i] > max)
+                    max = array[i];
+            }
+
+            int[] count = new int[max - min + 1];
+            int z = 0;
+
+            for (int i = 0; i < count.Length; i++)
+                count[i] = 0;
+
+            for (int i = 0; i < array.Length; i++)
+                count[array[i] - min]++;
+
+            for (int i = min; i <= max; i++)
+            {
+                while (count[i - min]-- > 0)
+                {
+                    array[z] = i;
+                    ++z;
+                }
+            }
+
+        } // Counting
+        public static void Bucket(ref int[] array)
+        {
+            int minValue = array[0];
+            int maxValue = array[0];
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > maxValue)
+                    maxValue = array[i];
+                if (array[i] < minValue)
+                    minValue = array[i];
+            }
+
+            List<int>[] bucket = new List<int>[maxValue - minValue + 1];
+
+            for (int i = 0; i < bucket.Length; i++)
+            {
+                bucket[i] = new List<int>();
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                bucket[array[i] - minValue].Add(array[i]);
+            }
+
+            int k = 0;
+            for (int i = 0; i < bucket.Length; i++)
+            {
+                if (bucket[i].Count > 0)
+                {
+                    for (int j = 0; j < bucket[i].Count; j++)
+                    {
+                        array[k] = bucket[i][j];
+                        k++;
+                    }
+                }
+            }
+
+        } // Bucket
+        public static void Radix(ref int[] array)
+        {
+            var numbers = new Queue<int>(array);
+            var buckets = InitializeArray<Queue<int>>(10);
+            int m = 10;
+            int n = 1;
+            for (int i = numbers.Max().ToString().Length; i > 0; i--)
+            {
+                while (numbers.Count > 0)
+                {
+                    buckets[numbers.Peek() % m / n].Enqueue(numbers.Dequeue());
+                }
+                foreach (Queue<int> bucket in buckets)
+                {
+                    while (bucket.Count > 0)
+                    {
+                        numbers.Enqueue(bucket.Dequeue());
+                    }
+                }
+                m *= 10;
+                n *= 10;
+            }
+            array = numbers.ToArray();
+        } // Radix
+        public static void MSDRadix(ref int[] array) => MSDRadix(array, 0, array.Length - 1, 0, new int[array.Length]); // MSDRadix
+
     }
 
 }
