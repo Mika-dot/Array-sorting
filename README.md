@@ -60,17 +60,16 @@ Below is a table with the main sorting features.
 | Heapify        | O(n logn)                | O(n logn)                 | O(n logn)               | O(n)    |
 | Cocktail       | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
 | OddEven        | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
-
-| Tim            | O(n^2)                   | O(n^2)                    | O(n^2)                  | O(n)    |
-| Counting       | O(n logn)                | O(n logn)                 | O(n^2)                  | O(logn) |
-| Radix          | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
-| Bucket         | O(n)                     | O(n logn)                 | O(n logn)               | O(n)    |
-| BinaryInsertion| O(n)                     | O((n^2) / 2^p)            | O(n^2)                  | O(n)    |
-| Bogo           | O(n)                     | O(n+k)                    | O(n+k)                  | O(n+k)  |
-| Cycle          | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
-| Exchange       | O(n logn)                | O(n logn)                 | O(n logn)               | O(n)    |
-| Heap           | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
-| MSDRadix       | O(n)                     | O(n^2)                    | O(n^2)                  | O(n)    |
+| Tim            | O(n)                     | O(n logn)                 | O(n logn)               | O(n)    |
+| Counting       | O(n+k)                   | O(n+k)                    | O(n)                    | O(n+k)  |
+| Radix          | O(n × k)                 | O(n × k)                  | O(n)                    | O(n × k)|
+| Bucket         | O(n^2)                   | O(n × k)                  | O(n)                    | O(n × k)|
+| BinaryInsertion| O(n)                     | O(n logn)                 | O(n logn)               | O(n)    |
+| Bogo           | O(n)                     | O(n * n!)                 | O(n * n!)               | O(n)    |
+| Cycle          | O(-)                     | O(n^2)                    | O(n^2)                  | O(n)    |
+| Exchange       | O(n^2)                   | O(n^2)                    | O(n^2)                  | O(n)    |
+| Heap           | O(n logn)                | O(n logn)                 | O(n logn)               | O(n)    |
+| MSDRadix       | O(n * k)                 | O(n * k)                  | O(n logn)               | O(n)    |
 
 
 Brief description of each algorithm taken from different sites.
