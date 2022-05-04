@@ -453,7 +453,7 @@ A multiple run through the array is performed, neighboring elements are compared
 
 First, elements with odd indices are compared/exchanged with elements with even indices (1st with 2nd, 3rd with 4th, 5th with 6th, etc.). Then elements with even indices are compared/exchanged with neighboring elements with odd indices (2nd with 3rd, 4th with 5th, 6th with 7th, etc.). Then again the odd ones are compared with the even ones, then again the even ones with the odd ones, and so on. The process ends if there were no exchanges as a result of two runs, which means the array is ordered.
 
-#### Cocktail sort in Python
+#### OddEven sort in Python
 ```
 def odd_even(data):
     n = len(data)
@@ -476,6 +476,248 @@ def odd_even(data):
 ![OddEven](https://github.com/Mika-dot/Automated-array-sorting/blob/main/complexity%20in%20graphics/OddEven.PNG)
 #### 10 -> 2000 Real
 ![OddEven](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/OddEven.PNG)
+
+# Tim
+
+Timsort is a hybrid sorting algorithm that combines insertion sort and merge sort, published in 2002 by Tim Peters. Timsort is currently the standard sorting algorithm in Python, OpenJDK 7, Apple Swift Standard Library 5, and implemented in Android JDK 1.5. The main idea of the algorithm is that in the real world sorted data arrays often contain ordered subarrays. On such data, Timsort is significantly faster than many sorting algorithms.
+
+#### 10 -> 20000 Synthetic
+![Tim](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/Tim.PNG)
+#### 10 -> 20000 Real
+![Tim](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Tim.PNG)
+
+# Counting 
+
+Counting sort is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then do some arithmetic to calculate the position of each object in the output sequence. 
+
+Counting sort makes assumptions about the data, for example, it assumes that values are going to be in the range of 0 to 10 or 10 – 99 etc, Some other assumptions counting sort makes are input data will be all real numbers.
+
+Like other algorithms this sorting algorithm is not a comparison-based algorithm, it hashes the value in a temporary count array and uses them for sorting.
+
+#### Counting sort in Python
+```
+def countSort(arr):
+    output = [0 for i in range(len(arr))]
+    count = [0 for i in range(256)]
+    ans = ["" for _ in arr]
+    for i in arr:
+        count[ord(i)] += 1
+    for i in range(256):
+        count[i] += count[i-1]
+    for i in range(len(arr)):
+        output[count[ord(arr[i])]-1] = arr[i]
+        count[ord(arr[i])] -= 1
+    for i in range(len(arr)):
+        ans[i] = output[i]
+    return ans
+arr = "geeksforgeeks"
+ans = countSort(arr)
+print("Sorted character array is % s" %("".join(ans)))
+```
+
+#### 10 -> 50000 Synthetic
+![Counting](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/Counting.PNG)
+#### 10 -> 50000 Real
+![Counting](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Counting.PNG)
+
+# Bucket 
+
+Bucket sort is mainly useful when input is uniformly distributed over a range. For example, consider the following problem. 
+Sort a large set of floating point numbers which are in range from 0.0 to 1.0 and are uniformly distributed across the range. How do we sort the numbers efficiently?
+A simple way is to apply a comparison based sorting algorithm. The lower bound for Comparison based sorting algorithm (Merge Sort, Heap Sort, Quick-Sort .. etc) is Ω(n Log n), i.e., they cannot do better than nLogn. 
+Can we sort the array in linear time? Counting sort can not be applied here as we use keys as index in counting sort. Here keys are floating point numbers.  
+The idea is to use bucket sort. Following is bucket algorithm.
+
+#### Bucket sort in Python
+```
+def insertionSort(b):
+    for i in range(1, len(b)):
+        up = b[i]
+        j = i - 1
+        while j >= 0 and b[j] > up:
+            b[j + 1] = b[j]
+            j -= 1
+        b[j + 1] = up    
+    return b                
+def bucketSort(x):
+    arr = []
+    slot_num = 10 # 10 means 10 slots, each
+                  # slot's size is 0.1
+    for i in range(slot_num):
+        arr.append([])
+    for j in x:
+        index_b = int(slot_num * j)
+        arr[index_b].append(j)
+    for i in range(slot_num):
+        arr[i] = insertionSort(arr[i])
+    k = 0
+    for i in range(slot_num):
+        for j in range(len(arr[i])):
+            x[k] = arr[i][j]
+            k += 1
+    return x
+x = [0.897, 0.565, 0.656,
+     0.1234, 0.665, 0.3434]
+print("Sorted Array is")
+print(bucketSort(x))
+```
+
+#### 10 -> 10000 Synthetic
+![Bucket](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/Bucket.PNG)
+#### 10 -> 10000 Real
+![Bucket](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Bucket.PNG)
+
+# BinaryInsertion 
+
+We can use binary search to reduce the number of comparisons in normal insertion sort. Binary Insertion Sort find use binary search to find the proper location to insert the selected item at each iteration.
+In normal insertion, sort it takes O(i) (at ith iteration) in worst case. we can reduce it to O(logi) by using binary search.
+
+#### BinaryInsertion sort in Python
+```
+def binary_search(arr, val, start, end):
+    if start == end:
+        if arr[start] > val:
+            return start
+        else:
+            return start+1
+    if start > end:
+        return start
+    mid = (start+end)/2
+    if arr[mid] < val:
+        return binary_search(arr, val, mid+1, end)
+    elif arr[mid] > val:
+        return binary_search(arr, val, start, mid-1)
+    else:
+        return mid
+def insertion_sort(arr):
+    for i in xrange(1, len(arr)):
+        val = arr[i]
+        j = binary_search(arr, val, 0, i-1)
+        arr = arr[:j] + [val] + arr[j:i] + arr[i+1:]
+    return arr
+```
+
+#### 10 -> 5000 Synthetic
+![BinaryInsertion](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/BinaryInsertion.PNG)
+#### 10 -> 10000 Real
+![BinaryInsertion](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/BinaryInsertion.PNG)
+
+# Cycle 
+
+Cycle sort is an in-place sorting Algorithm, unstable sorting algorithm, a comparison sort that is theoretically optimal in terms of the total number of writes to the original array.
+
+It is optimal in terms of number of memory writes. It minimizes the number of memory writes to sort (Each value is either written zero times, if it’s already in its correct position, or written one time to its correct position.)
+It is based on the idea that array to be sorted can be divided into cycles. Cycles can be visualized as a graph. We have n nodes and an edge directed from node i to node j if the element at i-th index must be present at j-th index in the sorted array.
+Cycle in arr[] = {4, 5, 2, 1, 5}
+Cycle in arr[] = {4, 3, 2, 1}
+We one by one consider all cycles. We first consider the cycle that includes first element. We find correct position of first element, place it at its correct position, say j. We consider old value of arr[j] and find its correct position, we keep doing this till all elements of current cycle are placed at correct position, i.e., we don\’t come back to cycle starting point.
+
+#### Cycle sort in Python
+```
+def cycleSort(array):
+  writes = 0
+  for cycleStart in range(0, len(array) - 1):
+    item = array[cycleStart]
+    pos = cycleStart
+    for i in range(cycleStart + 1, len(array)):
+      if array[i] < item:
+        pos += 1
+    if pos == cycleStart:
+      continue
+    while item == array[pos]:
+      pos += 1
+    array[pos], item = item, array[pos]
+    writes += 1
+    while pos != cycleStart:
+      pos = cycleStart
+      for i in range(cycleStart + 1, len(array)):
+        if array[i] < item:
+          pos += 1
+      while item == array[pos]:
+        pos += 1
+      array[pos], item = item, array[pos]
+      writes += 1
+  return writes
+```
+
+#### 10 -> 3000 Synthetic
+![Cycle](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/Cycle.PNG)
+#### 10 -> 3000 Real
+![Cycle](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Cycle.PNG)
+
+# Exchange 
+
+An exchange sort algorithm is one which compares adjacent elements and moves them to their correct position by swapping them based on a less-than rule. For example, while sorting to ascending order, we might swap if the element on the left is greater than the element on the right. Iteratively following this process gives us a final list where the input elements are sorted in ascending order.
+
+#### Exchange sort in Python
+```
+def bubbleSort(items):
+    swapped = True
+    pass_count = 1
+    while(swapped):
+        print('Pass ' + str(pass_count))
+        swapped = False
+        for i in range(0, len(items) - 1):
+            if items[i] > items[i + 1]:
+                print('Swapping '
+                      + str(items[i])
+                      + ' and '
+                      + str(items[i+1]))
+                items[i], items[i + 1] = items[i+1], items[i]
+                swapped = True
+        print('After pass '
+              + str(pass_count)
+              + ', items are: '
+              + str(items))
+        pass_count += 1
+    return items
+```
+
+#### 10 -> 3000 Synthetic
+![Exchange](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/Exchange.PNG)
+#### 10 -> 3000 Real
+![Exchange](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Exchange.PNG)
+
+# Heap 
+
+Heapsort is a comparison based sorting technique based on a Binary Heap data structure. It is similar to selection sort where we first find the maximum element and place the maximum element at the end. We repeat the same process for the remaining element.
+
+#### Heap sort in Python
+```
+def heapify(arr, n, i):
+    largest = i  # Initialize largest as root
+    l = 2 * i + 1     # left = 2*i + 1
+    r = 2 * i + 2     # right = 2*i + 2
+    if l < n and arr[i] < arr[l]:
+        largest = l
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+    if largest != i:
+        arr[i],arr[largest] = arr[largest],arr[i]  # swap
+        heapify(arr, n, largest)
+```
+
+#### 10 -> 10000 Synthetic
+![Heap](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/Heap.PNG)
+#### 10 -> 10000 Real
+![Heap](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/Heap.PNG)
+
+# MSDRadix 
+In this article, two types of Radix Sort are discussed:
+
+LSD Radix Sort: It starts sorting from the end of strings (the Least significant digit).
+MSD Radix Sort: It starts sorting from the beginning of strings (the Most significant digit).
+In this article, the task is to discuss the MSD Radix Sort and compare it with LSD Radix Sort.
+
+Approach: The idea is to perform the following steps for each digit i where the value of i varies from the most significant digit to the least significant digit:
+
+Store elements in different buckets according to their ith digit.
+Recursively sort each bucket that has more than one element.
+
+#### 10 -> 200 Synthetic
+![MSDRadix](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics/MSDRadix.PNG)
+#### 10 -> 100 Real
+![MSDRadix](https://github.com/Mika-dot/Array-sorting/blob/main/complexity%20in%20graphics%20real/MSDRadix.PNG)
 
 
 ---
