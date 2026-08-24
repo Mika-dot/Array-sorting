@@ -1,0 +1,71 @@
+algorithm,input,size,median_ms
+Quick,Random,4000,4.228505500000001
+Quick,Sorted,4000,3.7123175
+Quick,Reverse,4000,4.987039
+Quick,Nearly sorted,4000,11.3862505
+Quick,Many duplicates,4000,40.120819999999995
+Merge,Random,4000,5.071904999999999
+Merge,Sorted,4000,4.0893835
+Merge,Reverse,4000,4.1134745
+Merge,Nearly sorted,4000,4.4092695
+Merge,Many duplicates,4000,7.3062745
+Heap,Random,4000,1.183611
+Heap,Sorted,4000,0.6258859999999999
+Heap,Reverse,4000,0.6334219999999999
+Heap,Nearly sorted,4000,0.6766265
+Heap,Many duplicates,4000,0.7189190000000001
+Shell,Random,4000,6.06318
+Shell,Sorted,4000,2.263668
+Shell,Reverse,4000,3.847924
+Shell,Nearly sorted,4000,3.8260465
+Shell,Many duplicates,4000,3.5834155
+Counting,Random,4000,0.8892180000000001
+Counting,Sorted,4000,0.8861085
+Counting,Reverse,4000,0.879839
+Counting,Nearly sorted,4000,0.8863335
+Counting,Many duplicates,4000,0.170929
+Radix,Random,4000,2.9275045
+Radix,Sorted,4000,3.5986089999999997
+Radix,Reverse,4000,2.6345345
+Radix,Nearly sorted,4000,2.644399
+Radix,Many duplicates,4000,2.592352
+Tim,Random,4000,0.30124249999999997
+Tim,Sorted,4000,0.0165045
+Tim,Reverse,4000,0.1227425
+Tim,Nearly sorted,4000,0.06643399999999999
+Tim,Many duplicates,4000,0.2282845
+Patience,Random,4000,1.659974
+Patience,Sorted,4000,11.722338
+Patience,Reverse,4000,0.6796365
+Patience,Nearly sorted,4000,2.2986495
+Patience,Many duplicates,4000,1.27065
+Bubble,Random,700,15.3871555
+Bubble,Sorted,700,0.024722
+Bubble,Reverse,700,21.847400999999998
+Bubble,Nearly sorted,700,7.313309
+Bubble,Many duplicates,700,12.057948
+Insertion,Random,700,6.243428
+Insertion,Sorted,700,0.044040499999999996
+Insertion,Reverse,700,11.9230265
+Insertion,Nearly sorted,700,0.42336949999999995
+Insertion,Many duplicates,700,5.850483499999999
+Selection,Random,700,6.736261
+Selection,Sorted,700,5.8184955
+Selection,Reverse,700,6.5537295
+Selection,Nearly sorted,700,6.5684115
+Selection,Many duplicates,700,5.689514
+Cocktail,Random,700,12.8348385
+Cocktail,Sorted,700,0.0236555
+Cocktail,Reverse,700,20.9002215
+Cocktail,Nearly sorted,700,0.786535
+Cocktail,Many duplicates,700,11.404115000000001
+Comb,Random,700,0.6963055
+Comb,Sorted,700,0.395844
+Comb,Reverse,700,0.461056
+Comb,Nearly sorted,700,0.500785
+Comb,Many duplicates,700,0.4728235
+Cycle,Random,700,21.5580605
+Cycle,Sorted,700,7.150848
+Cycle,Reverse,700,13.396003499999999
+Cycle,Nearly sorted,700,7.437900000000001
+Cycle,Many duplicates,700,18.0659755

@@ -1,6 +1,76 @@
 # Automated array sorting
 Algorithms taken from articles on Habré and Wikipedia are presented in the "sorting algorithms" folder.
 
+## Visual benchmark: sorting algorithms on identical arrays
+
+The charts below are generated from actual runs, not hand-drawn complexity
+curves. Every algorithm receives a copy of the same deterministic array; the
+result is checked against the reference sorted sequence after every run.
+Random seed: `20260824`.
+
+### Efficient algorithms — growth from 100 to 20,000 elements
+
+The Y axis is logarithmic so linear, `O(n log n)` and slower growth remain
+readable on the same chart.
+
+![Measured scaling of efficient sorting algorithms](docs/assets/benchmarks/efficient-scaling.png)
+
+| Algorithm | Median time at 20,000 elements* | Expected family |
+|---|---:|---:|
+| Tim | 2.04 ms | `O(n log n)`, adaptive |
+| Heap | 4.59 ms | `O(n log n)` |
+| Counting | 4.74 ms | `O(n + k)` |
+| Patience | 9.77 ms | `O(n log n)` |
+| Radix | 15.82 ms | `O(d · (n + b))` |
+| Quick | 23.33 ms | average `O(n log n)` |
+| Merge | 30.92 ms | `O(n log n)` |
+| Shell | 45.63 ms | gap-sequence dependent |
+
+### Quadratic algorithms — why they stop scaling
+
+![Measured scaling of quadratic sorting algorithms](docs/assets/benchmarks/quadratic-scaling.png)
+
+At 1,600 elements Bubble already takes about `95.6 ms`, while Comb finishes in
+about `2.1 ms` in the same reference environment. Cycle minimizes writes, but
+its repeated position search makes it the slowest algorithm in this test.
+
+### The input order changes the result
+
+Each cell shows runtime relative to a random array (`1.00×`). Green is faster,
+red is slower. This makes best/worst cases visible: Insertion and Bubble benefit
+strongly from ordered data, while Selection performs almost the same number of
+comparisons regardless of order.
+
+![Influence of input order](docs/assets/benchmarks/input-shapes.png)
+
+### Comparisons and array writes
+
+Wall-clock time depends on the machine. Operation counts explain the algorithm
+itself. Selection performs many comparisons but few writes; Bubble performs a
+large number of both; Insertion is attractive for short or nearly sorted runs.
+
+![Comparison and write count growth](docs/assets/benchmarks/operation-growth.png)
+
+### What sorting looks like
+
+The following snapshots show Bubble Sort moving the largest values to the
+right after each group of passes.
+
+![Bubble Sort progress](docs/assets/benchmarks/sorting-process.png)
+
+### Reproduce the experiment
+
+```bash
+python3 -m pip install -r tools/requirements.txt
+python3 tools/generate_sorting_benchmarks.py
+```
+
+The script writes PNG charts and their source CSV files to
+`docs/assets/benchmarks/`. It also verifies that every output is correctly
+sorted. *The absolute timings describe the Python reference implementations,
+not C# wall-clock performance. Use them to study relative scaling and input
+sensitivity; run a C# benchmark on the target machine for deployment numbers.
+
 ---
 Realizable algorithms.
 
@@ -32,9 +102,9 @@ Realizable algorithms.
 - [x] [Heap](https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%80%D0%B0%D0%BC%D0%B8%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [x] [MSDRadix](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D0%B0%D0%B7%D1%80%D1%8F%D0%B4%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [ ] [PSRS](https://neerc.ifmo.ru/wiki/index.php?title=PSRS-%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
-- [ ] [Multithreaded](https://neerc.ifmo.ru/wiki/index.php?title=%D0%9C%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC)
+- [x] [Multithreaded](https://neerc.ifmo.ru/wiki/index.php?title=%D0%9C%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC)
 - [ ] [Han's](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D0%A5%D1%8D%D0%BD%D0%B0_(%D0%B8%D0%BB%D0%B8_%D0%A5%D0%B0%D0%BD%D0%B0%3F))
-- [ ] [Patience](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A2%D0%B5%D1%80%D0%BF%D0%B5%D0%BB%D0%B8%D0%B2%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
+- [x] [Patience](https://neerc.ifmo.ru/wiki/index.php?title=%D0%A2%D0%B5%D1%80%D0%BF%D0%B5%D0%BB%D0%B8%D0%B2%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0)
 - [ ] [Smooth](https://neerc.ifmo.ru/wiki/index.php?title=Smoothsort)
 
 ---
