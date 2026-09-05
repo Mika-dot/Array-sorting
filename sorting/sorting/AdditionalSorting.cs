@@ -67,29 +67,116 @@ namespace sorting
 
         public static int[] Patience(int[] array)
         {
-            List<List<int>> piles = new List<List<int>>();
+            if (array == null) throw new ArgumentNullException(nameof(array));
+            if (array.Length < 2) return (int[])array.Clone();
+
+            var piles = new List<List<int>>();
+            var tops = new List<int>();
+
             foreach (int value in array)
             {
-                int index = piles.FindIndex(p => p[p.Count - 1] >= value);
-                if (index < 0)
+                int lo = 0;
+                int hi = tops.Count;
+                while (lo < hi)
+                {
+                    int mid = lo + ((hi - lo) >> 1);
+                    if (tops[mid] >= value)
+                        hi = mid;
+                    else
+                        lo = mid + 1;
+                }
+
+                if (lo == piles.Count)
+                {
                     piles.Add(new List<int> { value });
+                    tops.Add(value);
+                }
                 else
-                    piles[index].Add(value);
+                {
+                    piles[lo].Add(value);
+                    tops[lo] = value;
+                }
             }
 
-            List<int> result = new List<int>();
-            while (piles.Count > 0)
+            var heap = new List<PileHead>();
+            for (int i = 0; i < piles.Count; i++)
+                PushPileHead(heap, new PileHead(piles[i][piles[i].Count - 1], i));
+
+            int[] result = new int[array.Length];
+            int write = 0;
+
+            while (heap.Count > 0)
             {
-                int best = 0;
-                for (int i = 1; i < piles.Count; i++)
-                    if (piles[i][piles[i].Count - 1] < piles[best][piles[best].Count - 1])
-                        best = i;
+                PileHead head = PopPileHead(heap);
+                result[write++] = head.Value;
 
-                result.Add(piles[best][piles[best].Count - 1]);
-                piles[best].RemoveAt(piles[best].Count - 1);
-                if (piles[best].Count == 0) piles.RemoveAt(best);
+                List<int> pile = piles[head.PileIndex];
+                pile.RemoveAt(pile.Count - 1);
+                if (pile.Count > 0)
+                    PushPileHead(heap, new PileHead(pile[pile.Count - 1], head.PileIndex));
             }
-            return result.ToArray();
+
+            return result;
+        }
+
+        private struct PileHead
+        {
+            public PileHead(int value, int pileIndex)
+            {
+                Value = value;
+                PileIndex = pileIndex;
+            }
+
+            public int Value;
+            public int PileIndex;
+        }
+
+        private static bool Less(PileHead a, PileHead b)
+        {
+            return a.Value < b.Value || (a.Value == b.Value && a.PileIndex < b.PileIndex);
+        }
+
+        private static void PushPileHead(List<PileHead> heap, PileHead value)
+        {
+            int index = heap.Count;
+            heap.Add(value);
+
+            while (index > 0)
+            {
+                int parent = (index - 1) >> 1;
+                if (!Less(heap[index], heap[parent])) break;
+
+                PileHead temp = heap[index];
+                heap[index] = heap[parent];
+                heap[parent] = temp;
+                index = parent;
+            }
+        }
+
+        private static PileHead PopPileHead(List<PileHead> heap)
+        {
+            PileHead root = heap[0];
+            int last = heap.Count - 1;
+            heap[0] = heap[last];
+            heap.RemoveAt(last);
+
+            int index = 0;
+            while (index < heap.Count)
+            {
+                int left = index * 2 + 1;
+                if (left >= heap.Count) break;
+
+                int right = left + 1;
+                int smallest = right < heap.Count && Less(heap[right], heap[left]) ? right : left;
+                if (!Less(heap[smallest], heap[index])) break;
+
+                PileHead temp = heap[index];
+                heap[index] = heap[smallest];
+                heap[smallest] = temp;
+                index = smallest;
+            }
+
+            return root;
         }
 
         [Obsolete("The previous Smooth() method was a HeapSort alias, not Smoothsort. A verified Leonardo-heap implementation is still a research task.")]
