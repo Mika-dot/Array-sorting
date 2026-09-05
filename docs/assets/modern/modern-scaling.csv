@@ -1,0 +1,25 @@
+algorithm,size,median_ms
+Python built-in,1000,0.055624
+PowerSort ref,1000,1.716987
+IntroSort ref,1000,0.778007
+PDQ-inspired ref,1000,0.761091
+Linear model buckets,1000,0.59512
+Signed LSD radix,1000,1.075817
+Python built-in,5000,0.585525
+PowerSort ref,5000,10.139666
+IntroSort ref,5000,5.024359
+PDQ-inspired ref,5000,5.380688
+Linear model buckets,5000,3.175032
+Signed LSD radix,5000,6.778572
+Python built-in,20000,2.891252
+PowerSort ref,20000,45.946381
+IntroSort ref,20000,21.869697
+PDQ-inspired ref,20000,22.140597
+Linear model buckets,20000,14.606291
+Signed LSD radix,20000,25.97818
+Python built-in,60000,9.905121
+PowerSort ref,60000,156.720731
+IntroSort ref,60000,80.997744
+PDQ-inspired ref,60000,78.963518
+Linear model buckets,60000,50.311994
+Signed LSD radix,60000,85.380443
