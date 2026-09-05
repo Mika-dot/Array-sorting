@@ -42,15 +42,23 @@ namespace sorting
                 int pos = cycleStart;
                 for (int i = cycleStart + 1; i < a.Length; i++)
                     if (a[i] < item) pos++;
+
                 if (pos == cycleStart) continue;
-                while (item == a[pos]) pos++;
+
+                while (pos < a.Length && item == a[pos]) pos++;
+                if (pos == a.Length) continue;
+
                 (item, a[pos]) = (a[pos], item);
+
                 while (pos != cycleStart)
                 {
                     pos = cycleStart;
                     for (int i = cycleStart + 1; i < a.Length; i++)
                         if (a[i] < item) pos++;
-                    while (item == a[pos]) pos++;
+
+                    while (pos < a.Length && item == a[pos]) pos++;
+                    if (pos == a.Length) break;
+
                     (item, a[pos]) = (a[pos], item);
                 }
             }
@@ -76,6 +84,7 @@ namespace sorting
                 for (int i = 1; i < piles.Count; i++)
                     if (piles[i][piles[i].Count - 1] < piles[best][piles[best].Count - 1])
                         best = i;
+
                 result.Add(piles[best][piles[best].Count - 1]);
                 piles[best].RemoveAt(piles[best].Count - 1);
                 if (piles[best].Count == 0) piles.RemoveAt(best);
@@ -83,11 +92,11 @@ namespace sorting
             return result.ToArray();
         }
 
+        [Obsolete("The previous Smooth() method was a HeapSort alias, not Smoothsort. A verified Leonardo-heap implementation is still a research task.")]
         public static int[] Smooth(int[] array)
         {
-            // Smoothsort implementation follows Dijkstra's heap-based approach.
-            // Current version uses the same O(n log n) heap core to keep behaviour deterministic.
-            return Heap(array);
+            throw new NotSupportedException(
+                "Smoothsort is intentionally disabled because the previous implementation delegated to HeapSort and was mislabeled.");
         }
 
         public static int[] Multithreaded(int[] array)
@@ -101,6 +110,7 @@ namespace sorting
         {
             if (left >= right) return;
             int mid = left + (right - left) / 2;
+
             if (right - left > 1000)
             {
                 System.Threading.Tasks.Parallel.Invoke(
@@ -112,6 +122,7 @@ namespace sorting
                 ParallelMergeSort(a, left, mid);
                 ParallelMergeSort(a, mid + 1, right);
             }
+
             Merge(a, left, mid, right);
         }
 
@@ -119,10 +130,12 @@ namespace sorting
         {
             int[] temp = new int[right - left + 1];
             int i = left, j = mid + 1, k = 0;
+
             while (i <= mid && j <= right)
                 temp[k++] = a[i] <= a[j] ? a[i++] : a[j++];
             while (i <= mid) temp[k++] = a[i++];
             while (j <= right) temp[k++] = a[j++];
+
             Array.Copy(temp, 0, a, left, temp.Length);
         }
     }
